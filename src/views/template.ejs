@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print PDF TM</title>
+    <link rel="stylesheet" href="../../src/views/template.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmb87Jx1zch29XNF1pGkQg4kVS8VgijLsH9g&s"
+    />
+  </head>
+  <body>
+    <center>
+      <h1>PDF Print TM</h1>
+      <label for="encodedHtml">Masukkan data:</label> <br />
+      <textarea id="encodedHtml" placeholder="Masukkan string"></textarea>
+      <br />
+      <br />
+      <br />
+      <button type="button" onclick="saveData()">SIMPAN</button>
+      <button type="button" id="pdfButton" onclick="downloadPdf()">PDF</button>
+    </center>
+    <script type="module" src="../../dist/scripts/template.js"></script>
+  </body>
+</html>
