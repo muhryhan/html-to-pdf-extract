@@ -35,13 +35,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Project Structure 📁
 ```bash
 html-to-pdf-node/
+├── public/                        
+│   └── extract-data.html
+│   └── index.html
 ├── src/                        
 │   ├── controllers/            
 │   │   └── appController.ts    # Main controller for handling core application logic
+│   │   └── uploadController.ts
 │   ├── helpers/                
-│   │   └── dataHelper.ts       # Helper functions read file JSON and decode base64
-│   │   └── errorHelper.ts      # Helper for standardized error handling
-│   │   └── pdfHelper.ts        # Functions for PDF generation
+│   │   └── dataUtils.ts       # Helper functions read file JSON and decode base64
+│   │   └── errorHandler.ts      # Helper for standardized error handling
 │   ├── models/                 # Placeholder for data models or schema definitions (if needed)
 │   ├── plugins/                
 │   │   └── corsPlugin.ts       # Mengatur CORS (Cross-Origin Resource Sharing) untuk aplikasi
@@ -53,14 +56,11 @@ html-to-pdf-node/
 │   │   └── README.md           
 │   │   └── root.ts             # Root route definition and handler for base API endpoint
 │   ├── scripts/                # Contains JavaScript/Typescript files or utilities
-│   │   └── template.ts         # function for template.ejs
-│   ├── services/               
-│   ├── types/                  # Custom TypeScript type declarations
-│   │   └── fastify-static.d.ts
-│   │   └── point-of-view.d.ts 
-│   ├── views/                  # EJS templates and styling for HTML rendering
-│   │   └── template.css        # CSS styling for EJS template
-│   │   └── template.ejs        # EJS template file for HTML to PDF conversion
+│   │   └── dataHandling.ts         # function for template.ejs
+│   │   └── uploadFile.ts
+│   ├── services/
+│   │   └── extractionService.ts               
+│   │   └── pdfService.ts
 │   └── app.ts                  # Main app configuration and initialization entry point
 │   └── server.ts               # Server setup and listening logic for Fastify
 ├── test/                       
