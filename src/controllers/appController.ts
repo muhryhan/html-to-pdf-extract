@@ -1,10 +1,10 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import fs from 'fs/promises';
-import { readJsonFile, decodeBase64 } from '../helpers/dataHelper.js';
-import { generatePdf, sendPdfResponse } from '../helpers/pdfHelper.js';
-import { handleError } from '../helpers/errorHelper.js';
+import fsPromises from 'fs/promises';
+import { readJsonFile, decodeBase64 } from '../helpers/dataUtils.js';
+import { generatePdf, sendPdfResponse } from '../services/pdfService.js';
+import { handleError } from '../helpers/errorHandler.js';
 
 // Mendapatkan __dirname dari file ESModule
 const __filename = fileURLToPath(import.meta.url);
@@ -12,15 +12,15 @@ const __dirname = path.dirname(__filename);
 
 // Constants untuk path file data dan template
 const DATA_FILE_PATH = path.join(__dirname, '../data.json'); // Lokasi file JSON untuk menyimpan encoded HTML
-const TEMPLATE_PATH = path.join(__dirname, '../../src/views/template.ejs'); // Lokasi template EJS
+const TEMPLATE_PATH = path.join(__dirname, '../../public/index.html');
 
 /**
  * Controller untuk menyajikan HTML template ke browser.
  */
 export async function serveHtmlTemplate(request: FastifyRequest, reply: FastifyReply) {
   try {
-    // Membaca file template EJS
-    const template = await fs.readFile(TEMPLATE_PATH, 'utf-8');
+    // Membaca file HTML
+    const template = await fsPromises.readFile(TEMPLATE_PATH, 'utf-8');
     return reply.type('text/html').send(template);
   } catch (error) {
     // Log error dan kirimkan status 500 jika terjadi kesalahan
@@ -36,7 +36,7 @@ export async function saveEncodedHtml(request: FastifyRequest, reply: FastifyRep
   const { encodedHtml } = request.body as { encodedHtml: string };
   try {
     // Menyimpan encodedHtml ke dalam file JSON
-    await fs.writeFile(DATA_FILE_PATH, JSON.stringify({ encodedHtml }));
+    await fsPromises.writeFile(DATA_FILE_PATH, JSON.stringify({ encodedHtml }));
     return reply.send({ message: 'Data saved successfully!' });
   } catch (error) {
     // Log error dan kirimkan status 500 jika terjadi kesalahan

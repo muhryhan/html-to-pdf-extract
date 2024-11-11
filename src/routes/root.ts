@@ -1,13 +1,17 @@
 import { FastifyPluginAsync } from "fastify";
+import fastifyMultipart from '@fastify/multipart';
 import fastifyFormBody from '@fastify/formbody'; // Plugin untuk mem-parsing form body dalam request POST
 import staticPlugin from '../plugins/staticPlugin.js'; // Mengimpor plugin untuk serving file statis
 
-// Import handler (logic) dari controllers.ts
+// Import handler (logic) dari appControllers.ts
 import { 
   serveHtmlTemplate, saveEncodedHtml, 
   viewDecodedHtml, generatePdfFromHtmlGet, 
-  generatePdfFromHtmlPost 
+  generatePdfFromHtmlPost
 } from '../controllers/appController.js';
+
+import { uploadAndExtractFile, serveHtmlExtract }
+  from '../controllers/uploadController.js';
 
 /**
  * Root plugin yang mendefinisikan rute-rute utama aplikasi.
@@ -23,6 +27,9 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 
   // Mendaftarkan plugin static dari staticPlugin.ts
   await fastify.register(staticPlugin);
+
+  // Menggunakan plugin multipart untuk menangani upload file
+  await fastify.register(fastifyMultipart);
   
   // RUTE
   // Rute untuk menyajikan halaman Utama
@@ -39,6 +46,12 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   
   // Rute untuk generate PDF dari HTML (POST method)
   fastify.post('/generate-pdf-post', generatePdfFromHtmlPost);
+
+  // Rute ekstraksi data GET
+  fastify.get('/extract-view-uploading', serveHtmlExtract);
+
+  // Rute ekstraksi data POST
+  fastify.post( '/upload-receive-extract', uploadAndExtractFile);
 };
 
 export default root;
