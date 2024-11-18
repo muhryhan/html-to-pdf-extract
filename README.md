@@ -3,8 +3,8 @@ This project was bootstrapped with Fastify-CLI.
 
 <div align="center" valign="middle">
 <img src="https://www.vectorlogo.zone/logos/docker/docker-official.svg" alt="Docker logo" width="200"/>
-<img src="https://cdn.icon-icons.com/icons2/3913/PNG/512/fastify_logo_icon_248574.png" alt="Fastify logo" width="200"/>
 <img src="http://mherman.org/assets/img/blog/typescript-logo.png" alt="Typescript logo" width="240"/>
+<img src="https://cdn.icon-icons.com/icons2/3913/PNG/512/fastify_logo_icon_248574.png" alt="Fastify logo" width="200"/>
 </div>
 
 ## 🚀 Installation
