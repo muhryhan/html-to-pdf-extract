@@ -10,7 +10,7 @@ import {
   generatePdfFromHtmlPost
 } from '../controllers/appController.js';
 
-import { uploadAndExtractFile, serveHtmlExtract }
+import { serveHtmlExtract, uploadAndExtractFile }
   from '../controllers/uploadController.js';
 
 /**
@@ -47,11 +47,11 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   // Rute untuk generate PDF dari HTML (POST method)
   fastify.post('/generate-pdf-post', generatePdfFromHtmlPost);
 
-  // Rute ekstraksi data GET
+  // Rute untuk upload file
   fastify.get('/extract-view-uploading', serveHtmlExtract);
 
-  // Rute ekstraksi data POST
-  fastify.post( '/upload-receive-extract', uploadAndExtractFile);
+  // Rute untuk ekstraksi file
+  fastify.post( '/extract-data', uploadAndExtractFile);
 };
 
 export default root;

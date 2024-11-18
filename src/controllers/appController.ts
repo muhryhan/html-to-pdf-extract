@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 // Constants untuk path file data dan template
 const DATA_FILE_PATH = path.join(__dirname, '../data.json'); // Lokasi file JSON untuk menyimpan encoded HTML
-const TEMPLATE_PATH = path.join(__dirname, '../../public/index.html');
+const TEMPLATE_PATH = path.join(__dirname, '../../src/views/index.ejs');
 
 /**
  * Controller untuk menyajikan HTML template ke browser.

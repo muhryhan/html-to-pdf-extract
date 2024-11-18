@@ -10,14 +10,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Constants untuk path file data dan template
-const EXTRACT_PATH = path.join(__dirname, '../../public/extract-data.html');
+const EXTRACT_PATH = path.join(__dirname, '../../src/views/extract-data.ejs');
 
 /**
  * Controller untuk menyajikan HTML extract ke browser.
  */
 export async function serveHtmlExtract(request: FastifyRequest, reply: FastifyReply) {
     try {
-      // Membaca file HTML
+      // Membaca file HTML  
       const template = await fsPromises.readFile(EXTRACT_PATH, 'utf-8');
       return reply.type('text/html').send(template);
     } catch (error) {

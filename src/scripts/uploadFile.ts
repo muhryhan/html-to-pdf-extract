@@ -14,7 +14,7 @@ async function uploadFile(): Promise<void> {
   
     try {
       // Mengirim permintaan ke server untuk melakukan ekstraksi
-      const response = await fetch("/upload-receive-extract", {
+      const response = await fetch("/extract-data", {
         method: "POST",
         body: formData,
       });
