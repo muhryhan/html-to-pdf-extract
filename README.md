@@ -10,7 +10,7 @@ This project was bootstrapped with Fastify-CLI.
 ## 🚀 Installation
 1 Clone the repository
 ```sh
-git clone git@gitlab.com:hisbil.dev/html-to-pdf-node.git
+git clone git@github.com:muhryhan/html-to-pdf-extract.git
 ```
 2 Go to the project directory
 ```sh
@@ -35,9 +35,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Project Structure 📁
 ```bash
 html-to-pdf-node/
-├── public/                        
-│   └── extract-data.html
-│   └── index.html
 ├── src/                        
 │   ├── controllers/            
 │   │   └── appController.ts    # Main controller for handling core application logic
@@ -45,12 +42,15 @@ html-to-pdf-node/
 │   ├── helpers/                
 │   │   └── dataUtils.ts       # Helper functions read file JSON and decode base64
 │   │   └── errorHandler.ts      # Helper for standardized error handling
+│   │   └── extractHelper.ts
 │   ├── models/                 # Placeholder for data models or schema definitions (if needed)
+│   │   └── extractModel.ts
 │   ├── plugins/                
 │   │   └── corsPlugin.ts       # Mengatur CORS (Cross-Origin Resource Sharing) untuk aplikasi
 │   │   └── README.md           
 │   │   └── staticPlugin.ts     # Menyajikan file statis dari direktori    
-│   │   └── supportPlugin.ts          
+│   │   └── supportPlugin.ts
+│   │   └── uploadPlugin.ts
 │   │   └── viewPlugin.ts       # Menyajikan view/template menggunakan EJS sebagai templating engine   
 │   ├── routes/                 # API route handlers
 │   │   └── README.md           
@@ -61,6 +61,9 @@ html-to-pdf-node/
 │   ├── services/
 │   │   └── extractionService.ts               
 │   │   └── pdfService.ts
+│   ├── views/
+│   │   └── extract-data.ejs
+│   │   └── index.ejs
 │   └── app.ts                  # Main app configuration and initialization entry point
 │   └── server.ts               # Server setup and listening logic for Fastify
 ├── test/                       
